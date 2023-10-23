@@ -8,10 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "user_roles", schema = "authjwt", indexes = {
-        @Index(name = "fk_user_roles_unity_user1_idx", columnList = "unity_user_id"),
-        @Index(name = "fk_user_roles_app_roles1_idx", columnList = "app_roles_id")
-})
+@Table(name = "user_roles")
 public class UserRole {
     @EmbeddedId
     private UserRoleId id;
@@ -24,6 +21,6 @@ public class UserRole {
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "unity_user_id", nullable = false)
-    private ServiceUser unityUser;
+    private ServiceUser serviceUser;
 
 }

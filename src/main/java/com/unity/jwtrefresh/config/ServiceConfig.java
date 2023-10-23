@@ -1,17 +1,11 @@
 package com.unity.jwtrefresh.config;
 
-import com.mysql.cj.jdbc.interceptors.ServerStatusDiffInterceptor;
 import com.unity.jwtrefresh.dao.ServiceUserRepository;
-import jakarta.persistence.EntityExistsException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-
-import java.security.Key;
 
 @Configuration
 @RequiredArgsConstructor

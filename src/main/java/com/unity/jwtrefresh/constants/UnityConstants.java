@@ -9,7 +9,7 @@ public class UnityConstants {
     public static final String TIME_ZONE = "Asia/Tokyo";
 
     public static final long FIVE_DAYS_EXPIRATION_TIME = 432_000_000; // 5 days expressed in milliseconds
-    public static final long ACCESS_TOKEN_EXPIRATION_TIME = 18_000_0; // 03 Minutes expressed in milliseconds
+    public static final long ACCESS_TOKEN_EXPIRATION_TIME = 18_000_00; // 03 Minutes expressed in milliseconds
     public static final long THREE_DAYS_EXPIRATION_TIME = 259_200_000; // 3 days expressed in milliseconds
     public static final String TOKEN_PREFIX = "Bearer ";
     public static final String JWT_TOKEN_HEADER = "Jwt-Token";
@@ -23,7 +23,7 @@ public class UnityConstants {
 
 
     public static final String OPTIONS_HTTP_METHOD = "OPTIONS";
-    public static final String[] PUBLIC_URLS = {"/v1/auth/login", "/v1/auth/register", "/users/image/**", "/graphiql/**", "/graphql/**","/swagger-ui/**", "/v3/api-docs/**", "/swagger-resources/**", "/v3/api-docs/swagger-config", "/webjars/**"};
+    public static final String[] PUBLIC_URLS = {"/logout","/oauth2/success","/v1/auth/login", "/v1/auth/register", "/users/image/**", "/graphiql/**", "/graphql/**","/swagger-ui/**", "/v3/api-docs/**", "/swagger-resources/**", "/v3/api-docs/swagger-config", "/webjars/**"};
     //public static final String[] PUBLIC_URLS = {"**"};
 
 

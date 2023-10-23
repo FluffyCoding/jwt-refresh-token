@@ -7,6 +7,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.exceptions.SignatureVerificationException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
+import com.unity.jwtrefresh.entities.OAuth2ClientLocal;
 import com.unity.jwtrefresh.security.ServiceUserDetails;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
@@ -58,6 +59,18 @@ public class JwtTokenUtils {
                 .withIssuedAt(new Date())
                 .withSubject(userDetails.getUsername())
                 .withArrayClaim(AUTHORITIES, claims)
+                .withExpiresAt(new Date(System.currentTimeMillis() + ACCESS_TOKEN_EXPIRATION_TIME))
+                .sign(Algorithm.HMAC512(accessTokenKey.getBytes()));
+    }
+
+    public String generateToken(OAuth2ClientLocal client) {
+        //String[] claims = getClaimsFromUser((ServiceUserDetails) authentication.getAuthorities());
+        return JWT.create()
+                .withIssuer(getIssuer)
+                .withAudience(getAudience)
+                .withIssuedAt(new Date())
+                .withSubject(client.getFullName())
+                .withArrayClaim(AUTHORITIES, client.getAuthorities())
                 .withExpiresAt(new Date(System.currentTimeMillis() + ACCESS_TOKEN_EXPIRATION_TIME))
                 .sign(Algorithm.HMAC512(accessTokenKey.getBytes()));
     }

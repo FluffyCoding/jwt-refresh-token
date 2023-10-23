@@ -13,11 +13,7 @@ import lombok.Setter;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "modules_permissions", schema = "authjwt", indexes = {
-        @Index(name = "role_id_UNIQUE", columnList = "role_id", unique = true),
-        @Index(name = "fk_modules_permissions_app_modules1_idx", columnList = "app_modules_id"),
-        @Index(name = "fk_modules_permissions_app_permissions1_idx", columnList = "app_permissions_id")
-})
+@Table(name = "modules_permissions")
 public class ModulesPermission {
     @Id
     @Size(max = 50)

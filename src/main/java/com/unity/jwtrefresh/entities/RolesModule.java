@@ -8,10 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity(name = "RolesModule")
-@Table(name = "roles_modules", schema = "authjwt", indexes = {
-        @Index(name = "fk_roles_modules_app_roles1_idx", columnList = "app_roles_id"),
-        @Index(name = "fk_roles_modules_app_modules1_idx", columnList = "app_modules_id")
-})
+@Table(name = "roles_modules")
 public class RolesModule {
 
     @EmbeddedId

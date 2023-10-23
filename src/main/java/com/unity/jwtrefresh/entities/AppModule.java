@@ -10,9 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "app_modules", schema = "authjwt", indexes = {
-        @Index(name = "module_name_UNIQUE", columnList = "module_name", unique = true)
-})
+@Table(name = "app_modules")
 public class AppModule {
     @Id
     @Size(max = 50)

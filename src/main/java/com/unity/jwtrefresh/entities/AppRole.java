@@ -13,9 +13,7 @@ import org.hibernate.annotations.Where;
 @Entity
 @SQLDelete(sql = "UPDATE app_roles SET deleted = true , valid=false WHERE id = ?", check = ResultCheckStyle.COUNT)
 @Where(clause = "deleted <> true")
-@Table(name = "app_roles", schema = "authjwt", indexes = {
-        @Index(name = "role_name_UNIQUE", columnList = "role_name", unique = true)
-})
+@Table(name = "app_roles")
 public class AppRole {
     @Id
     @Column(name = "id", nullable = false, length = 50)

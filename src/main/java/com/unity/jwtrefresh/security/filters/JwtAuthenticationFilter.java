@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,9 @@ import org.springframework.lang.NonNull;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.client.OAuth2AuthorizeRequest;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClientManager;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -37,10 +41,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Value("${jwt-refresh-cookie-name}")
     private String refreshTokenName;
 
+
     @Override
     protected void doFilterInternal(@NonNull HttpServletRequest request,
                                     @NonNull HttpServletResponse response,
                                     @NonNull FilterChain filterChain) throws ServletException, IOException {
+
+
 
 
         String jwtToken = null;
@@ -64,8 +71,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 jwtToken = authorizationHeader.substring(TOKEN_PREFIX.length());
             }
 
-
-            final String grantedUser = jwtTokenUtils.getSubject(accessToken);
+            final String grantedUser = jwtTokenUtils.getSubject(jwtToken);
 
             if (jwtTokenUtils.isAccessTokenValid(jwtToken, grantedUser) && SecurityContextHolder.getContext().getAuthentication() == null) {
                 List<GrantedAuthority> authorities = jwtTokenUtils.getAuthoritiesFromToken(jwtToken);

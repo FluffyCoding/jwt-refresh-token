@@ -17,8 +17,8 @@ import java.time.LocalDate;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "UnityUser")
-@Table(name = "unity_user", schema = "authjwt")
+@Entity(name = "ServiceUser")
+@Table(name = "service_user")
 public class ServiceUser implements Serializable {
 
     @Serial
@@ -39,7 +39,7 @@ public class ServiceUser implements Serializable {
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "token_id",
             referencedColumnName = "id",
-            foreignKey = @ForeignKey(name = "unity_user_refresh_token_fk")
+            foreignKey = @ForeignKey(name = "service_user_refresh_token_fk")
     )
     private UserRefreshToken userRefreshToken;
 

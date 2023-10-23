@@ -8,7 +8,7 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 
 @Entity(name = "UserRefreshToken")
-@Table(name = "user_refresh_token", schema = "authjwt")
+@Table(name = "user_refresh_token")
 @Getter
 @Setter
 public class UserRefreshToken {
