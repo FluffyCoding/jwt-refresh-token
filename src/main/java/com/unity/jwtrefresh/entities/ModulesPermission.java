@@ -33,16 +33,16 @@ public class ModulesPermission {
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "app_permissions_id", nullable = false)
-    private AppPermission appPermissions;
+    private PagePermission pagePermissions;
 
     @Size(max = 50)
     @NotNull
     @Column(name = "role_id", nullable = false, length = 50)
     private String roleId;
 
-    public ModulesPermission(AppModule appModules, AppPermission appPermissions, String roleId) {
+    public ModulesPermission(AppModule appModules, PagePermission pagePermissions, String roleId) {
         this.appModules = appModules;
-        this.appPermissions = appPermissions;
+        this.pagePermissions = pagePermissions;
         this.roleId = roleId;
     }
 }

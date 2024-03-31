@@ -1,12 +1,11 @@
 package com.unity.jwtrefresh.services.impl;
 
 import com.unity.jwtrefresh.dao.AppModuleRepository;
-import com.unity.jwtrefresh.dao.AppPermissionRepository;
 import com.unity.jwtrefresh.dao.AppRoleRepository;
 import com.unity.jwtrefresh.dao.ModulesPermissionRepository;
 import com.unity.jwtrefresh.dtos.*;
 import com.unity.jwtrefresh.entities.AppModule;
-import com.unity.jwtrefresh.entities.AppPermission;
+import com.unity.jwtrefresh.entities.PagePermission;
 import com.unity.jwtrefresh.entities.AppRole;
 import com.unity.jwtrefresh.entities.ModulesPermission;
 import com.unity.jwtrefresh.services.RollModulesPermissionsService;
@@ -20,7 +19,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 @RequiredArgsConstructor
@@ -110,7 +108,7 @@ public class RollModulesPermissionsServiceImpl implements RollModulesPermissions
         for (var m : modules) {
             for (var p : m.getPermissions()) {
                 var module = new AppModule(m.getModuleId());
-                var permission = new AppPermission(p.getGrantedPermissionId());
+                var permission = new PagePermission(p.getGrantedPermissionId());
                 var modulesPermission = new ModulesPermission(module, permission, permissionsDto.getRollId());
                 permissionSet.add(modulesPermission);
             }

@@ -7,8 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.UUID;
-
 @Getter
 @Setter
 @AllArgsConstructor
@@ -17,7 +15,7 @@ import java.util.UUID;
 @Table(name = "app_permissions", schema = "authjwt", indexes = {
         @Index(name = "auth_name_UNIQUE", columnList = "permission_name", unique = true)
 })
-public class AppPermission {
+public class PagePermission {
     @Id
     @Size(max = 50)
     @Column(name = "id", nullable = false, length = 50)
@@ -28,7 +26,7 @@ public class AppPermission {
     @Column(name = "permission_name", length = 45)
     private String permissionName;
 
-    public AppPermission(String id) {
+    public PagePermission(String id) {
         this.id = id;
     }
 }
